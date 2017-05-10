@@ -9,7 +9,26 @@ app.controller("NavCtrl", ($scope) => {
 app.controller("ListCtrl", ($scope) => {
   $scope.poop = "💩";
 
-  $scope.todos = [{task: "Nap", isCompleted: false},{task: "Cry", isCompleted: false}];
+  $scope.todos = [
+        {
+          id: 0,
+          task: "mow the lawn",
+          isCompleted: true,
+          assignedTo: "Callan",
+        },
+        {
+          id: 1,
+          task: "grade quizzes",
+          isCompleted: false,
+          assignedTo: "Lauren",
+        },
+        {
+          id: 2,
+          task: "take a nap",
+          isCompleted: false,
+          assignedTo: "Zoe",
+        }
+      ];
 
   $scope.showNewItems = false;
 

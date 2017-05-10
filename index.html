@@ -5,6 +5,7 @@
     <title>Angular To-Do</title>
     <!-- Third Party Styles -->
     <link rel="stylesheet" href="./lib/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal Styles -->
     <link rel="stylesheet" href="./styles/main.css">
   </head>
@@ -45,13 +46,34 @@
             <h1>Ng-Todo</h1>
 
             <div class="allTodos" ng-show="!showNewItems">
-              <h4>All To Dos</h4>
-              <div class="row" ng-repeat="todo in todos">
-                <div class="col-xs-8 col-xs-offset-2">
-                  <p>{{todo.task}}</p>
+              <div>
+                <h3>OH SHIT.</h3>
+                <div class="panel panel-default" ng-repeat="todo in todos | filter: {isCompleted: false}">
+                    <div class="panel-body">
+                        <div class="col-xs-1"><input type="checkbox" ng-checked="todo.isCompleted" name=""/></div>
+                        <div class="col-xs-7">{{todo.task}}</div>
+                        <div class="col-xs-1 col-xs-offset-2">{{todo.assignedTo}}</div>
+                        <div class="col-xs-1"><button class="btn btn-danger fa fa-bathtub"></button></div>
+                    </div>
                 </div>
               </div>
+
+
+              <div>
+                  <h3>COMPLETED</h3>
+                  <div class="panel panel-default" ng-repeat="todo in todos | filter: {isCompleted: true}">
+                      <div class="panel-body">
+                          <div class="col-xs-1"><input type="checkbox" ng-checked="todo.isCompleted" name=""/></div>
+                          <div class="col-xs-7">{{todo.task}}</div>
+                          <div class="col-xs-1  col-xs-offset-2">{{todo.assignedTo}}</div>
+                          <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o"></button></div>
+                      </div>
+                  </div>
+              </div>
             </div>
+
+
+
 
             <div class="newTodo" ng-show="showNewItems">
               <h4>New To Do</h4>

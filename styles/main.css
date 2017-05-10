@@ -1,5 +1,8 @@
 body {
-  background-color: #00B16A; }
+  background-color: #913D88; }
+
+h1, h3 {
+  color: #F7CA18; }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
