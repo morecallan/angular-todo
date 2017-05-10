@@ -8,42 +8,67 @@
     <!-- Personal Styles -->
     <link rel="stylesheet" href="./styles/main.css">
   </head>
-  <body>
-    <nav class="navbar navbar-default">
+  <body ng-app="ToDoApp" ng-cloak>
+    <nav class="navbar navbar-default" ng-controller="NavCtrl">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Angular To-Do</a>
+          <a class="navbar-brand" href="#">{{title}}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-          <form class="navbar-form navbar-left">
+          <div class="navbar-form navbar-left">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
+          </div>
+          <ul class="nav navbar-nav navbar-right" >
+            <li ng-repeat="item in navItems"><a href="#">{{item.name}}</a></li>
           </ul>
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+    <div ng-controller="ListCtrl">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <button class="col-xs-6 btn btn-success" name="button" ng-click="newItem()">New Item</button>
+          <button class="col-xs-6 btn btn-info" name="button" ng-click="allItems()">All Items</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <h1>Ng-Todo</h1>
+
+            <div class="allTodos" ng-show="!showNewItems">
+              <h4>All To Dos</h4>
+              <div class="row" ng-repeat="todo in todos">
+                <div class="col-xs-8 col-xs-offset-2">
+                  <p>{{todo.task}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="newTodo" ng-show="showNewItems">
+              <h4>New To Do</h4>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
     <!-- Third Party Scripts -->
     <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
     <!-- Personal Scripts -->
+    <!-- INIT ANGULAR APP -->
+    <script type="text/javascript" src="./javascripts/main.js"></script>
   </body>
 </html>
